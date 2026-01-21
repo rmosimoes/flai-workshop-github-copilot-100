@@ -4,6 +4,38 @@ document.addEventListener("DOMContentLoaded", () => {
   const signupForm = document.getElementById("signup-form");
   const messageDiv = document.getElementById("message");
 
+  // Inspirational quotes for students
+  const quotes = [
+    { text: "O sucesso é a soma de pequenos esforços repetidos dia após dia", author: "Robert Collier" },
+    { text: "Acredite em si mesmo e tudo será possível", author: "Anônimo" },
+    { text: "O único lugar onde o sucesso vem antes do trabalho é no dicionário", author: "Vidal Sassoon" },
+    { text: "A educação é a arma mais poderosa que você pode usar para mudar o mundo", author: "Nelson Mandela" },
+    { text: "Não espere por oportunidades extraordinárias. Agarre ocasiões comuns e faça delas grandes", author: "Orison Swett Marden" },
+    { text: "Você é mais corajoso do que acredita, mais forte do que parece e mais inteligente do que pensa", author: "A.A. Milne" },
+    { text: "O futuro pertence àqueles que acreditam na beleza de seus sonhos", author: "Eleanor Roosevelt" },
+    { text: "Sua única limitação é você mesmo", author: "Anônimo" },
+    { text: "Comece de onde você está. Use o que você tem. Faça o que você pode", author: "Arthur Ashe" },
+    { text: "A persistência é o caminho do êxito", author: "Charles Chaplin" },
+    { text: "Sonhe grande, trabalhe duro, mantenha o foco e cerque-se de boas pessoas", author: "Anônimo" },
+    { text: "O conhecimento é poder, mas o entusiasmo puxa o interruptor", author: "Ivern Ball" },
+    { text: "Não deixe o que você não pode fazer interferir no que você pode fazer", author: "John Wooden" },
+    { text: "A diferença entre ganhar e perder é, na maioria das vezes, não desistir", author: "Walt Disney" },
+    { text: "Seja a mudança que você quer ver no mundo", author: "Mahatma Gandhi" }
+  ];
+
+  // Function to display quote of the day
+  function displayQuoteOfTheDay() {
+    const quoteText = document.getElementById("quote-text");
+    const quoteAuthor = document.getElementById("quote-author");
+    
+    // Get a random quote each time the page is refreshed
+    const quoteIndex = Math.floor(Math.random() * quotes.length);
+    const quote = quotes[quoteIndex];
+    
+    quoteText.textContent = quote.text;
+    quoteAuthor.textContent = `- ${quote.author}`;
+  }
+
   // Function to fetch activities from API
   async function fetchActivities() {
     try {
@@ -149,5 +181,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Initialize app
+  displayQuoteOfTheDay();
   fetchActivities();
 });
